@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb2ff05b5841a1b5db011d9655efcbc61a296955
 # 💕 CryptoMatch - AI-Powered Crypto Dating for Farcaster
 
 > Find your perfect crypto soulmate with AI-powered personality matching!
@@ -384,7 +387,10 @@ MIT License - See [LICENSE](LICENSE) file
 **Made with ❤️ and 💎🙌 by the CryptoMatch team**
 
 **Ready to find your crypto soulmate? Deploy now and go viral! 🚀**
+<<<<<<< HEAD
 =======
 # cryptomatch-farcaster
 💕 AI-Powered Crypto Dating for Farcaster | Find your crypto soulmate with smart personality matching &amp; viral Frame v2 app
 >>>>>>> 5caba061666b7dfac087b5d48d7b1125a8d6abe9
+=======
+>>>>>>> fb2ff05b5841a1b5db011d9655efcbc61a296955

@@ -1,9 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb2ff05b5841a1b5db011d9655efcbc61a296955
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+<<<<<<< HEAD
 =======
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -15,6 +19,8 @@ __pycache__/
 
 # Distribution / packaging
 >>>>>>> 5caba061666b7dfac087b5d48d7b1125a8d6abe9
+=======
+>>>>>>> fb2ff05b5841a1b5db011d9655efcbc61a296955
 .Python
 build/
 develop-eggs/
@@ -29,6 +35,9 @@ sdist/
 var/
 wheels/
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb2ff05b5841a1b5db011d9655efcbc61a296955
 *.egg-info/
 .installed.cfg
 *.egg
@@ -84,6 +93,7 @@ htmlcov/
 tmp/
 temp/
 *.tmp
+<<<<<<< HEAD
 =======
 share/python-wheels/
 *.egg-info/
@@ -271,3 +281,5 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 >>>>>>> 5caba061666b7dfac087b5d48d7b1125a8d6abe9
+=======
+>>>>>>> fb2ff05b5841a1b5db011d9655efcbc61a296955
