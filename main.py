@@ -148,30 +148,9 @@ def generate_frame_html(
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    """Initial Farcaster Frame - Landing Page"""
-    
-    # Default image for initial frame
-    default_image = "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=630&fit=crop"
-    
-    buttons = [
-        {
-            "label": "🔥 Find My Match",
-            "action": "post"
-        },
-        {
-            "label": "ℹ️ About",
-            "action": "post"
-        }
-    ]
-    
-    html = generate_frame_html(
-        image_url=default_image,
-        buttons=buttons,
-        post_url=f"{settings.base_url}/match",
-        title="CryptoMatch - Find Your Crypto Soulmate 💕",
-        description="AI-powered crypto dating! Discover who you're most compatible with in the crypto world!"
-    )
-    
+    """Serve the Mini App HTML"""
+    with open("static/app.html", "r") as f:
+        html = f.read()
     return HTMLResponse(content=html)
 
 

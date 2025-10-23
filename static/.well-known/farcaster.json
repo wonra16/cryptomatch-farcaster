@@ -13,6 +13,7 @@
     "iconUrl": "https://cryptomatch-farcaster.vercel.app/static/icon.png",
     "homeUrl": "https://cryptomatch-farcaster.vercel.app",
     "imageUrl": "https://cryptomatch-farcaster.vercel.app/static/preview.png",
+    "buttonTitle": "Find My Match",
     "splashImageUrl": "https://cryptomatch-farcaster.vercel.app/static/splash.png",
     "splashBackgroundColor": "#6200EA",
     "subtitle": "Find your crypto soulmate",
