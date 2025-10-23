@@ -7,6 +7,10 @@
       "config": {
         "maxLambdaSize": "50mb"
       }
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -16,7 +20,10 @@
     },
     {
       "src": "/.well-known/farcaster.json",
-      "dest": "/public/.well-known/farcaster.json"
+      "dest": "/static/.well-known/farcaster.json",
+      "headers": {
+        "Content-Type": "application/json"
+      }
     },
     {
       "src": "/(.*)",
