@@ -7,10 +7,3 @@
     }
   ]
 }
-{
-  "accountAssociation": {
-    "header": "eyJmaWQiOjMzOTk3MiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDY1NkQxZkYwRTA3OGY2REQ2OGREMjgzMkE0NzE3MjgwZjAyY2ZhNTUifQ",
-    "payload": "eyJkb21haW4iOiJjcnlwdG9tYXRjaC1mYXJjYXN0ZXIudmVyY2VsLmFwcCJ9",
-    "signature": "vNGXgoNkPoOsjvTDJJfzl7qwIhprW8XbMRqt6972OEIb32Axac5Tq8ugOxuinsa776sQti1cVpOAlFBKl7GYxRs="
-  }
-}
