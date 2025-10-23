@@ -9,6 +9,14 @@
       }
     }
   ],
+  "redirects": [
+    {
+      "source": "/.well-known/farcaster.json",
+      "destination": "https://api.farcaster.xyz/miniapps/hosted-manifest/019a0f55-c2f7-50de-6640-264eef4aeb6b",
+      "permanent": false,
+      "statusCode": 307
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
