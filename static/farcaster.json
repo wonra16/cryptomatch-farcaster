@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjEsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhGRTM3NjcyMTkzNjZFQkE1RTVhMTc4ZkY1ODc2NzREOGY0M0M5YjhFIn0",
+    "payload": "eyJkb21haW4iOiJjcnlwdG9tYXRjaC1mYXJjYXN0ZXIudmVyY2VsLmFwcCJ9",
+    "signature": "MHhGRTM3NjcyMTkzNjZFQkE1RTVhMTc4ZkY1ODc2NzREOGY0M0M5YjhF"
+  },
+  "frame": {
+    "version": "next",
+    "imageUrl": "https://cryptomatch-farcaster.vercel.app/static/og-image.png",
+    "button": {
+      "title": "Find My Match",
+      "action": {
+        "type": "launch_frame",
+        "name": "CryptoMatch",
+        "url": "https://cryptomatch-farcaster.vercel.app",
+        "splashImageUrl": "https://cryptomatch-farcaster.vercel.app/static/splash.png",
+        "splashBackgroundColor": "#6200EA"
+      }
+    }
+  },
+  "manifest": {
+    "name": "CryptoMatch",
+    "iconUrl": "https://cryptomatch-farcaster.vercel.app/static/icon.png",
+    "homeUrl": "https://cryptomatch-farcaster.vercel.app",
+    "description": "AI-powered crypto personality matching! Find your perfect match in the crypto world.",
+    "splashImageUrl": "https://cryptomatch-farcaster.vercel.app/static/splash.png",
+    "splashBackgroundColor": "#6200EA",
+    "webhookUrl": "https://cryptomatch-farcaster.vercel.app/webhook"
+  }
+}

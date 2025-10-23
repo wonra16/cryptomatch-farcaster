@@ -1,18 +1,18 @@
-# Web Framework
+# Core Framework
 fastapi==0.109.0
 uvicorn[standard]==0.27.0
 python-multipart==0.0.6
 
-# HTTP Clients
+# HTTP & Data
 requests==2.31.0
 httpx==0.26.0
 aiohttp==3.9.1
 
-# Image Processing
+# Image Generation
 Pillow==10.2.0
 cairosvg==2.7.1
 
-# Database & Cache
+# Database
 redis==5.0.1
 asyncpg==0.29.0
 
