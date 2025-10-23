@@ -149,9 +149,167 @@ def generate_frame_html(
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     """Serve the Mini App HTML"""
-    with open("static/app.html", "r") as f:
-        html = f.read()
-    return HTMLResponse(content=html)
+    import os
+    
+    # Try multiple possible paths
+    possible_paths = [
+        "static/app.html",
+        "./static/app.html",
+        os.path.join(os.path.dirname(__file__), "static", "app.html"),
+        "/var/task/static/app.html"
+    ]
+    
+    html_content = None
+    for path in possible_paths:
+        try:
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    html_content = f.read()
+                break
+        except Exception as e:
+            continue
+    
+    if html_content:
+        return HTMLResponse(content=html_content)
+    
+    # Fallback: inline HTML with SDK
+    return HTMLResponse(content="""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoMatch</title>
+    <script src="https://unpkg.com/@farcaster/frame-sdk@0.0.6/dist/index.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container { max-width: 500px; width: 100%; text-align: center; }
+        .emoji { font-size: 80px; margin-bottom: 20px; }
+        h1 { font-size: 48px; margin: 0 0 10px 0; font-weight: 800; }
+        .tagline { font-size: 20px; opacity: 0.9; margin-bottom: 40px; }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #FFD93D;
+            color: #764ba2;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: translateY(-2px); }
+        .loading { display: none; text-align: center; }
+        .loading.active { display: block; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading active">
+        <div class="spinner"></div>
+        <p>Loading CryptoMatch...</p>
+    </div>
+    
+    <div id="app" class="container" style="display: none;">
+        <div class="emoji">💕</div>
+        <h1>CryptoMatch</h1>
+        <p class="tagline">Find Your Crypto Soulmate</p>
+        
+        <div class="card">
+            <h2 style="margin-bottom: 20px;">How It Works</h2>
+            <p>1️⃣ AI analyzes your crypto personality</p>
+            <p>2️⃣ Finds your perfect match</p>
+            <p>3️⃣ Get hilarious compatibility report</p>
+            <p>4️⃣ Share with friends!</p>
+        </div>
+        
+        <button id="matchBtn">🔥 Find My Match</button>
+        <p id="userInfo" style="margin-top: 20px; opacity: 0.7; font-size: 14px;"></p>
+    </div>
+
+    <script>
+        let sdk = window.FrameSDK;
+        let context = null;
+
+        async function init() {
+            try {
+                context = await sdk.context;
+                sdk.actions.ready();
+                
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('app').style.display = 'block';
+                
+                if (context && context.user) {
+                    const username = context.user.username || `FID ${context.user.fid}`;
+                    document.getElementById('userInfo').textContent = `Signed in as @${username}`;
+                }
+            } catch (err) {
+                console.error('SDK init failed:', err);
+                document.getElementById('loading').innerHTML = '<p>Failed to load SDK</p>';
+            }
+        }
+
+        document.getElementById('matchBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('matchBtn');
+            btn.disabled = true;
+            btn.textContent = 'Finding Your Match...';
+
+            try {
+                const response = await fetch('/match', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        untrustedData: {
+                            fid: context?.user?.fid || Math.floor(Math.random() * 10000),
+                            buttonIndex: 1,
+                        },
+                    }),
+                });
+
+                alert('Match found! (Full UI coming soon)');
+            } catch (err) {
+                alert('Failed to find match. Please try again!');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔥 Find My Match';
+            }
+        });
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>""")
 
 
 @app.post("/match")
