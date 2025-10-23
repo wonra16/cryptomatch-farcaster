@@ -377,9 +377,14 @@ async def health_check():
 async def farcaster_manifest():
     """Farcaster manifest endpoint for Mini App registration"""
     return JSONResponse(content={
-        "frame": {
-            "name": "CryptoMatch",
+        "accountAssociation": {
+            "header": "eyJmaWQiOjMzOTk3MiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDY1NkQxZkYwRTA3OGY2REQ2OGREMjgzMkE0NzE3MjgwZjAyY2ZhNTUifQ",
+            "payload": "eyJkb21haW4iOiJjcnlwdG9tYXRjaC1mYXJjYXN0ZXIudmVyY2VsLmFwcCJ9",
+            "signature": "vNGXgoNkPoOsjvTDJJfzl7qwIhprW8XbMRqt6972OEIb32Axac5Tq8ugOxuinsa776sQti1cVpOAlFBKl7GYxRs="
+        },
+        "miniapp": {
             "version": "1",
+            "name": "CryptoMatch",
             "iconUrl": f"{settings.base_url}/static/icon.png",
             "homeUrl": settings.base_url,
             "imageUrl": f"{settings.base_url}/static/preview.png",
@@ -387,14 +392,13 @@ async def farcaster_manifest():
             "splashImageUrl": f"{settings.base_url}/static/splash.png",
             "splashBackgroundColor": "#6200EA",
             "subtitle": "Find your crypto soulmate",
-            "description": "AI-powered crypto personality matching! Find your perfect match in the crypto world.",
+            "description": "AI-powered crypto personality matching! Find your perfect match in the crypto world. Get hilarious compatibility reports and share viral results!",
             "primaryCategory": "entertainment",
-            "tags": ["personality", "match", "compatibility", "viral", "web3"]
-        },
-        "accountAssociation": {
-            "header": "eyJmaWQiOjMzOTk3MiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDY1NkQxZkYwRTA3OGY2REQ2OGREMjgzMkE0NzE3MjgwZjAyY2ZhNTUifQ",
-            "payload": "eyJkb21haW4iOiJjcnlwdG9tYXRjaC1mYXJjYXN0ZXIudmVyY2VsLmFwcCJ9",
-            "signature": "vNGXgoNkPoOsjvTDJJfzl7qwIhprW8XbMRqt6972OEIb32Axac5Tq8ugOxuinsa776sQti1cVpOAlFBKl7GYxRs="
+            "tags": ["personality", "match", "compatibility", "viral", "web3"],
+            "tagline": "Find your crypto match",
+            "ogTitle": "CryptoMatch",
+            "ogDescription": "Find your crypto soulmate with AI-powered personality matching!",
+            "ogImageUrl": f"{settings.base_url}/static/preview.png"
         }
     })
 
