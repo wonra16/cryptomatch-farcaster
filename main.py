@@ -373,6 +373,32 @@ async def health_check():
     })
 
 
+@app.get("/.well-known/farcaster.json")
+async def farcaster_manifest():
+    """Farcaster manifest endpoint for Mini App registration"""
+    return JSONResponse(content={
+        "frame": {
+            "name": "CryptoMatch",
+            "version": "1",
+            "iconUrl": f"{settings.base_url}/static/icon.png",
+            "homeUrl": settings.base_url,
+            "imageUrl": f"{settings.base_url}/static/preview.png",
+            "buttonTitle": "Find My Match",
+            "splashImageUrl": f"{settings.base_url}/static/splash.png",
+            "splashBackgroundColor": "#6200EA",
+            "subtitle": "Find your crypto soulmate",
+            "description": "AI-powered crypto personality matching! Find your perfect match in the crypto world.",
+            "primaryCategory": "entertainment",
+            "tags": ["personality", "match", "compatibility", "viral", "web3"]
+        },
+        "accountAssociation": {
+            "header": "eyJmaWQiOjMzOTk3MiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDY1NkQxZkYwRTA3OGY2REQ2OGREMjgzMkE0NzE3MjgwZjAyY2ZhNTUifQ",
+            "payload": "eyJkb21haW4iOiJjcnlwdG9tYXRjaC1mYXJjYXN0ZXIudmVyY2VsLmFwcCJ9",
+            "signature": "vNGXgoNkPoOsjvTDJJfzl7qwIhprW8XbMRqt6972OEIb32Axac5Tq8ugOxuinsa776sQti1cVpOAlFBKl7GYxRs="
+        }
+    })
+
+
 @app.get("/api/personalities")
 async def list_personalities():
     """API endpoint to list all personality types"""
