@@ -1,9 +1,29 @@
 {
-  "redirects": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/.well-known/farcaster.json",
-      "destination": "https://api.farcaster.xyz/miniapps/hosted-manifest/019a104d-27e9-cf5e-676f-e066abf1e75a",
-      "permanent": false
+      "src": "main.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
     }
-  ]
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/.well-known/farcaster.json",
+      "dest": "/public/.well-known/farcaster.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "main.py"
+    }
+  ],
+  "env": {
+    "ENVIRONMENT": "production"
+  }
 }
